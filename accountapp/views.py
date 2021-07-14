@@ -28,8 +28,8 @@ def hello(request):
                       context={'hello_world_list': hello_world_list})
 
 
-class AccountCreateView(CreateView):
+class AccountCreateView(CreateView): # view를 만듬
     model = User
     form_class = UserCreationForm
     success_url = reverse_lazy('accountapp:hello') # class와 함수와 불러오는데 차이가 있어서 lazy 사용,클래스에서 주로 사용
-    template_name = 'accountapp/create.html'
+    template_name = 'accountapp/create.html' #회원가입페이지 연결방법
