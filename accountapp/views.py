@@ -12,7 +12,10 @@ from accountapp.models import HelloWorld
 
 
 def hello(request):
-    if request.method =='POST':
+
+    if request.user.is_authenticated :
+
+      if request.method =='POST':
 
         temp = request.POST.get("hello_world_input")
 
@@ -23,10 +26,14 @@ def hello(request):
         return HttpResponseRedirect(reverse('accountapp:hello'))
     # redirect to - 어디로 재연결할건지 , reverse -역추적을통해 위치를 알려줌.
 
-    else :
+      else :
         hello_world_list = HelloWorld.objects.all()
         return render(request, 'accountapp/hello_world.html',
                       context={'hello_world_list': hello_world_list})
+
+    else:
+        return  HttpResponseRedirect(reverse('accountapp:login'))
+
 
 
 class AccountCreateView(CreateView): # view를 만듬
@@ -47,6 +54,18 @@ class AccountUpdateView(UpdateView):
     context_object_name = 'target_user'
     success_url = reverse_lazy('accountapp:detail')
     template_name = 'accountapp/update.html'
+
+    def get(self, request, *args,**kwargs):
+        if request.user.is_authenticated :
+            return super().get(request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().post(request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
 
 class AccountDeleteView(DeleteView) :
     model = User
