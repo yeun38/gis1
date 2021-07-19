@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{#폼을 출력하지 않기 때문에 bootstrap 제외#}
+
+{% block content %}
+<div class="text-center mw-500 m-auto">
+<div class="m-5">
+    <div>
+        <h4>Quit</h4>
+    </div>
+    <div>
+        <form action="{% url 'accountapp:delete' pk=target_user.pk %}" method="post">
+          {% csrf_token %}
+        <div class = "m-4">
+            <input type="submit"
+                   class="btn btn-danger rounded-pill px-5">
+
+        </div>
+        </form>
+</div>
+
+{% endblock %}
