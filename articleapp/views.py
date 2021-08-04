@@ -6,6 +6,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse_lazy, reverse
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from articleapp.decorators import article_ownership_required
