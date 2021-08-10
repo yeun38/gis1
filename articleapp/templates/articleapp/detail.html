@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-{% block content %}
+{%  load bootstrap4 %}
+    {% block content %}
 
     <div class="container text-center">
 
@@ -34,11 +35,13 @@
             {% endif %}
         </div>
         <hr>
-        <div>
+        <div class="text-center my-4">
             {#  댓글 #}
+            {% include 'commentapp/create.html' %}
         </div>
 
     </div>
 
+    {% endblock %}
 
-{% endblock %}
+
