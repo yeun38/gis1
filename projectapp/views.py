@@ -16,3 +16,7 @@ class ProjectCreateView(CreateView):
     success_url = reverse_lazy('articleapp:list')
     template_name = 'projectapp/create.html'
 
+class ProjectDetailView(DetailView):
+    model = Project
+    context_object_name = 'target_project'
+    template_name = 'projectapp/detail.html'
