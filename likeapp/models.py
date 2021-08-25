@@ -5,7 +5,7 @@ from django.db import models
 from articleapp.models import Article
 
 
-class likeRecord(models.Model):
+class LikeRecord(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,
                              related_name='like_record', null=False)
     article = models.ForeignKey(Article, on_delete=models.CASCADE,
