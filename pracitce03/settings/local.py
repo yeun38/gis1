@@ -2,7 +2,9 @@ from .base import *
 
 
 env_list = dict()
+
 local_env = open(os.path.join(BASE_DIR, '.env'))
+
 while True:
     line = local_env.readline()
     if not line:
@@ -17,11 +19,13 @@ while True:
 SECRET_KEY = env_list['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
 
+# Database
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
