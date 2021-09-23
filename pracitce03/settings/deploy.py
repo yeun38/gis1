@@ -24,7 +24,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'django',
         'USER': read_secrets('MARIADB_USER'),
-        'PASSWORD': read_secrets('MARIADB_USER'),
+        'PASSWORD': read_secrets('MARIADB_PASSWORD'),
         'HOST': 'mariadb',
         'PORT': '3306',
     }
